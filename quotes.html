@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quotes Generator</title>
+
+    <style>
+
+body{
+        background-color: #ed7171;
+        text-align: center;
+        position: absolute;
+        top: 50%; 
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+
+.main{
+        background-color: rgb(255, 255, 255);
+        font-size: x-large;
+        padding:100px; 
+        border-radius: 8px;  
+    }
+    
+#timer{
+        margin-top: -10%;
+        background-color: #001787;
+        font-size: 20px;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        padding: 5px;
+        border-radius: 5px;
+        color: rgb(255, 255, 255);
+    }
+
+#quote-btn{
+        margin-top: 30px;
+        height: 50px;
+        width: 150px;
+        font-size: 18px;
+        color: white;
+        background-color: #001787;
+        padding: 5px;
+        border-radius: 5px;
+        }
+
+    </style>
+</head>
+     
+<body id="body">
+
+    <div class="container" id="Main">
+        <p class="time" id="timer" >Lets Start Our Night with some Quote</p>
+
+        <div class="main">
+            <quote id="quotes">Quotes will be displayed here </quote><br><br>
+            <button class="btn" id="quote-btn" onclick="generate()">New Quote</button>
+        </div>
+
+    </div>
+
+
+    <script>
+
+            var btn= false;
+            const now= new Date();
+            var am= now.getHours();
+
+            if(am<12)
+            {
+                var p1="Lets Start our Morning with some quote";
+                document.getElementById("timer").innerHTML=p1;
+            }
+            else if(am>=12 && am<=17)
+            {
+                var p2="Lets Start our Afternoon with some quote";
+                document.getElementById("timer").innerHTML=p2;
+            }
+            else{
+                var p3="Lets Start our Evening with some quote";
+                document.getElementById("timer").innerHTML=p3;
+            }
+
+
+            if(btn==true)
+            {
+                generate();
+            }
+
+            let quotes=["“Try not to become a man of success. Rather become a man of value.”― Albert Einstein",
+                        "“It is better to fail in originality than to succeed in imitation.”― Herman Melville",
+                        "“Letting go means to come to the realization that some people are a part of your history, but not a part of your destiny.― Steve Maraboli”",
+                        "“Success is getting what you want, happiness is wanting what you get― W.P. Kinsella”",
+                        "“Failure is the condiment that gives success its flavor.”― Truman Capote",
+                        "“Success is stumbling from failure to failure with no loss of enthusiasm.”― Winston S. Churchill",
+                    " “The worst part of success is trying to find someone who is happy for you.”-― Bette Midler", 
+                    "“Do your best, fuck the rest.”- Deepak Raj",
+                    "“yesterday is history tomorrow is mystry but today my freind is a gift, that is why it called present-Oogway”"
+                                
+            ];
+            let color=["#DE3163","#FF7F50","#6495ED","#17A589 ","#D68910","#34495E","#B3B6B7 ","#EDBB99","#C0392B","#1B2631 ","#145A32 ","#283747"];
+
+            function generate(){
+                var randQuote= quotes[Math.floor(Math.random() * quotes.length)];
+                document.getElementById("quotes").innerHTML=randQuote;
+                var colorq=color[Math.floor(Math.random() * color.length)];
+                document.getElementById("quotes").style.color=colorq;
+                document.getElementById("body").style.backgroundColor=colorq;
+                document.getElementById("quote-btn").style.backgroundColor=colorq;
+            }
+    </script>
+</body>
+</html>
